@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "5.7.0",
+    "applicationType": "monolith",
+    "baseName": "ciccwebix",
+    "clientFramework": "react",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "authenticationType": "true",
+    "cacheProvider": "no",
+    "databaseType": "true",
+    "devDatabaseType": "true",
+    "prodDatabaseType": "true",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": false,
+    "skipServer": true
+  }
+}
