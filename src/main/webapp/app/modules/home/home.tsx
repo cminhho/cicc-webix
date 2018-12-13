@@ -1,5 +1,4 @@
 import './home.css';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,8 +7,8 @@ import { Row, Col, Alert } from 'reactstrap';
 
 import { IRootState } from 'app/shared/reducers';
 import { getSession } from 'app/shared/reducers/authentication';
-import { BreadcrumbSkeleton, Accordion, AccordionItem } from 'carbon-components-react';
-
+import { BreadcrumbSkeleton, Accordion, AccordionItem, DataTable, DataTableSkeleton, Footer } from 'carbon-components-react';
+const { TableContainer, Table, TableHead, TableRow, TableBody, TableCell, TableHeader } = DataTable;
 export interface IHomeProp extends StateProps, DispatchProps {}
 
 export class Home extends React.Component<IHomeProp> {
@@ -17,31 +16,58 @@ export class Home extends React.Component<IHomeProp> {
     this.props.getSession();
   }
 
+  onClick() {}
+
   render() {
+    const rows = [
+      {
+        id: 'a',
+        foo: 'Foo a',
+        bar: 'Bar a',
+        baz: 'Baz a'
+      },
+      {
+        id: 'b',
+        foo: 'Foo b',
+        bar: 'Bar b',
+        baz: 'Baz b'
+      },
+      {
+        id: 'c',
+        foo: 'Foo c',
+        bar: 'Bar c',
+        baz: 'Baz c'
+      }
+    ];
+
+    // We would have a headers array like the following
+    const headers = [
+      {
+        // `key` is the name of the field on the row object itself for the header
+        key: 'foo',
+        // `header` will be the name you want rendered in the Table Header
+        header: 'Foo'
+      },
+      {
+        key: 'bar',
+        header: 'Bar'
+      },
+      {
+        key: 'baz',
+        header: 'Baz'
+      }
+    ];
+
+    const breadcrumbSkeleton = <BreadcrumbSkeleton />;
     const { account } = this.props;
     return (
       <Row>
-        <Col md="9">
-          <h2>Welcome, CiCC Platform!</h2>
-          <BreadcrumbSkeleton />
-          <article className="App__demo">
-            <h3 className="App__demo-title">Carbon Components</h3>
-            <Accordion>
-              <AccordionItem title="Example">
-                <p>This is a Component imported from Carbon and styled with the CSS from the main Carbon Components GitHub repo!</p>
-              </AccordionItem>
-              <AccordionItem title="Questions?">
-                <p>
-                  Hi there!{' '}
-                  <span aria-label="Hand wave" role="img">
-                    👋{' '}
-                  </span>{' '}
-                  if you have any questions about this demo, or are running into any issues setting this up in your own development
-                  environment, please feel free to reach out to us on Slack or make an issue on the GitHub Repository.
-                </p>
-              </AccordionItem>
-            </Accordion>
-          </article>
+        <Col md="12">
+          {breadcrumbSkeleton}
+          <div>
+            <br />
+            <DataTableSkeleton />
+          </div>
           <p className="lead">This is your homepage</p>
           {account && account.login ? (
             <div>
@@ -68,9 +94,6 @@ export class Home extends React.Component<IHomeProp> {
               </Alert>
             </div>
           )}
-        </Col>
-        <Col md="3" className="pad">
-          <span className="hipster rounded" />
         </Col>
       </Row>
     );

@@ -30,11 +30,11 @@ export class App extends React.Component<IAppProps> {
     return (
       <Router>
         <div className="app-container" style={{ paddingTop }}>
-          <ToastContainer
+          {/* <ToastContainer
             position={toast.POSITION.TOP_LEFT as ToastPosition}
             className="toastify-container"
             toastClassName="toastify-toast"
-          />
+          /> */}
           <ErrorBoundary>
             <Header
               isAuthenticated={this.props.isAuthenticated}
@@ -45,11 +45,11 @@ export class App extends React.Component<IAppProps> {
             />
           </ErrorBoundary>
           <div className="container-fluid view-container" id="app-view-container">
-            <Card className="jh-card">
+            <div className="jh-card">
               <ErrorBoundary>
                 <AppRoutes />
               </ErrorBoundary>
-            </Card>
+            </div>
             <Footer />
           </div>
         </div>
